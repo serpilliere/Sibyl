@@ -1,14 +1,14 @@
 import struct
 import logging
 
-from miasm2.jitter.loader.elf import vm_load_elf
-from miasm2.analysis.machine import Machine
-from miasm2.jitter.csts import PAGE_READ, PAGE_WRITE, EXCEPT_ACCESS_VIOL, EXCEPT_DIV_BY_ZERO, EXCEPT_PRIV_INSN
-from miasm2.core.bin_stream import bin_stream_vm
-from miasm2.analysis.dse import ESETrackModif
-import miasm2.expression.expression as m2_expr
-from miasm2.ir.ir import AssignBlock
-from miasm2.core.objc import CHandler
+from miasm.jitter.loader.elf import vm_load_elf
+from miasm.analysis.machine import Machine
+from miasm.jitter.csts import PAGE_READ, PAGE_WRITE, EXCEPT_ACCESS_VIOL, EXCEPT_DIV_BY_ZERO, EXCEPT_PRIV_INSN
+from miasm.core.bin_stream import bin_stream_vm
+from miasm.analysis.dse import ESETrackModif
+import miasm.expression.expression as m2_expr
+from miasm.ir.ir import AssignBlock
+from miasm.core.objc import CHandler
 
 from sibyl.commons import objc_is_dereferenceable
 from sibyl.config import config
@@ -227,9 +227,6 @@ class ExtractRef(object):
         self.symb.reset_regs()
         self.symb.update_engine_from_cpu()
 
-        ## Load the memory as ExprMem
-        self.symb.func_read = None
-        self.symb.func_write = None
         for base_addr, mem_segment in jitter.vm.get_all_memory().iteritems():
             # Split into 8 bytes chunk for get_mem_overlapping
             for start in xrange(0, mem_segment["size"], 8):
@@ -237,7 +234,7 @@ class ExtractRef(object):
                                                            size=64),
                                            size=8*min(8, mem_segment["size"] - start))
                 # Its initialisation, self.symb.apply_change is not necessary
-                self.symb.symbols[expr_mem] = self.symb._func_read(expr_mem)
+                self.symb.symbols[expr_mem] = self.symb.mem_read(expr_mem)
 
         ## Save the initial state
         self.symbols_init = self.symb.symbols.copy()

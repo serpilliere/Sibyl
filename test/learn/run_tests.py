@@ -5,8 +5,8 @@ import tempfile
 import imp
 from utils.log import log_error, log_success, log_info
 
-from miasm2.analysis.machine import Machine
-from miasm2.analysis.binary import Container
+from miasm.analysis.machine import Machine
+from miasm.analysis.binary import Container
 
 from sibyl.testlauncher import TestLauncher
 from sibyl.abi.x86 import ABI_AMD64_SYSTEMV

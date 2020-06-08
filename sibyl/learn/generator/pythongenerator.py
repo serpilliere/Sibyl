@@ -2,11 +2,11 @@ import struct
 from sibyl.learn.generator.generator import Generator
 from sibyl.learn.generator import templates as TPL
 from sibyl.learn.trace import MemoryAccess
-from miasm2.ir.ir import AssignBlock
+from miasm.ir.ir import AssignBlock
 
-from miasm2.jitter.csts import PAGE_READ, PAGE_WRITE
-from miasm2.expression.expression import *
-from miasm2.expression.simplifications import expr_simp
+from miasm.jitter.csts import PAGE_READ, PAGE_WRITE
+from miasm.expression.expression import *
+from miasm.expression.simplifications import expr_simp
 
 from sibyl.commons import objc_is_dereferenceable
 

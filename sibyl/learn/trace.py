@@ -2,9 +2,9 @@ from collections import namedtuple
 import struct
 
 from sibyl.learn.replay import Replay
-from miasm2.jitter.csts import PAGE_READ, PAGE_WRITE
-from miasm2.core.graph import DiGraph
-from miasm2.analysis.machine import Machine
+from miasm.jitter.csts import PAGE_READ, PAGE_WRITE
+from miasm.core.graph import DiGraph
+from miasm.analysis.machine import Machine
 
 
 class Trace(list):

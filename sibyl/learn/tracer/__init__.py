@@ -4,7 +4,7 @@
 """
 
 from sibyl.learn.tracer.pin import TracerPin
-from sibyl.learn.tracer.miasm import TracerMiasm
+from sibyl.learn.tracer.miasm_tracer import TracerMiasm
 
 AVAILABLE_TRACER = {
     "pin": TracerPin,

@@ -112,7 +112,7 @@ restrictive implementation, or a useless argument.
 
 The resulting test looks like:
 ```Python
-from miasm2.jitter.csts import PAGE_READ, PAGE_WRITE
+from miasm.jitter.csts import PAGE_READ, PAGE_WRITE
 
 from sibyl.test.test import TestHeader, TestSetTest
 

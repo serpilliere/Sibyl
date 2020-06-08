@@ -16,8 +16,8 @@
 
 import os
 
-from miasm2.analysis.machine import Machine
-from miasm2.analysis.binary import Container
+from miasm.analysis.machine import Machine
+from miasm.analysis.binary import Container
 
 from sibyl.config import config, config_paths
 from sibyl.actions.action import Action

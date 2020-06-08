@@ -1,6 +1,6 @@
 "Module for architecture guessing"
 
-from miasm2.analysis.binary import Container, ContainerUnknown
+from miasm.analysis.binary import Container, ContainerUnknown
 
 from sibyl.heuristics.heuristic import Heuristic
 

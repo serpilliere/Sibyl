@@ -6,7 +6,7 @@ class Engine(object):
 
     def __init__(self, machine):
         """Instanciate an Engine
-        @machine: miasm2.analysis.machine:Machine instance"""
+        @machine: miasm.analysis.machine:Machine instance"""
         self.logger = init_logger(self.__class__.__name__)
 
     def take_snapshot(self):

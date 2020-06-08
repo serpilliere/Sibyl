@@ -19,8 +19,8 @@ import json
 import sys
 from collections import namedtuple
 
-from miasm2.analysis.machine import Machine
-from miasm2.analysis.binary import Container
+from miasm.analysis.machine import Machine
+from miasm.analysis.binary import Container
 
 from sibyl.config import config
 from sibyl.testlauncher import TestLauncher

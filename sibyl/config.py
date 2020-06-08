@@ -67,7 +67,7 @@ class Config(object):
     def expandpath(path):
         """Expand @path with following rules:
         - $SIBYL is replaced by the installation path of Sibyl
-        - $MIASM is replaced by the installation path of miasm2
+        - $MIASM is replaced by the installation path of miasm
         - path are expanded ('~' -> '/home/user', ...)
         """
         if "$SIBYL" in path:
@@ -76,9 +76,9 @@ class Config(object):
             path = path.replace("$SIBYL", sibyl_base)
 
         if "$MIASM" in path:
-            import miasm2
-            miasm2_base = miasm2.__path__[0]
-            path = path.replace("$MIASM", miasm2_base)
+            import miasm
+            miasm_base = miasm.__path__[0]
+            path = path.replace("$MIASM", miasm_base)
 
         path = os.path.expandvars(path)
         path = os.path.expanduser(path)

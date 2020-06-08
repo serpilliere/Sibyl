@@ -1,5 +1,5 @@
-from miasm2.core.utils import pck32, pck64
-from miasm2.jitter.csts import PAGE_READ, PAGE_WRITE
+from miasm.core.utils import pck32, pck64
+from miasm.jitter.csts import PAGE_READ, PAGE_WRITE
 try:
     import unicorn
 except ImportError:

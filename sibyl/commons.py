@@ -5,8 +5,8 @@ try:
 except ImportError:
     pycparser = None
 else:
-    from miasm2.core.ctypesmngr import c_to_ast, CTypeFunc
-    from miasm2.core.objc import ObjCPtr, ObjCArray
+    from miasm.core.ctypesmngr import c_to_ast, CTypeFunc
+    from miasm.core.objc import ObjCPtr, ObjCArray
 
 def init_logger(name):
     logger = logging.getLogger(name)
@@ -51,7 +51,7 @@ class HeaderFile(object):
     def __init__(self, header_data, ctype_manager):
         """Parse @header_data to fill @ctype_manager
         @header_data: str of a C-like header file
-        @ctype_manager: miasm2.core.objc.CTypesManager instance"""
+        @ctype_manager: miasm.core.objc.CTypesManager instance"""
         self.data = header_data
         self.ctype_manager = ctype_manager
 

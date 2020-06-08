@@ -10,18 +10,19 @@ addons:
             - python-virtualenv
             - unzip
             - gcc-multilib
+            - python-future
 before_script:
 - "cd .."
 # make virtual env
 - "python /usr/lib/python2.7/dist-packages/virtualenv.py virtualenv;"
 - "cd virtualenv;"
 - "source bin/activate;"
-# install elfesteem
-- "git clone https://github.com/serpilliere/elfesteem elfesteem && cd elfesteem && python setup.py install && cd ..;"
 # install pyparsing
 - "pip install pyparsing"
+# install future
+- "pip install future"
 # install miasm
-- "cd ..;git clone -b 'v0.1.1' https://github.com/cea-sec/miasm miasm && cd miasm;"
+- "cd ..;git clone https://github.com/cea-sec/miasm miasm && cd miasm && git checkout 6faf83fe27bbfc7fec501d9b674480f02edea854;"
 - "python setup.py build build_ext -I$(pwd)/../virtualenv/include -L$(pwd)/../virtualenv/tinycc"
 - "python setup.py install"
 - "cd ..;"

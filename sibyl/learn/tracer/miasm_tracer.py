@@ -5,10 +5,10 @@ This module gives a tracer that uses miasm to run the program
 from sibyl.learn.tracer.tracer import Tracer
 from sibyl.learn.trace import Trace, Snapshot
 
-from miasm2.jitter.emulatedsymbexec import EmulatedSymbExec
-from miasm2.jitter.csts import PAGE_READ
-from miasm2.analysis.machine import Machine
-from miasm2.jitter.loader.elf import vm_load_elf
+from miasm.jitter.emulatedsymbexec import EmulatedSymbExec
+from miasm.jitter.csts import PAGE_READ
+from miasm.analysis.machine import Machine
+from miasm.jitter.loader.elf import vm_load_elf
 
 class CustomEmulatedSymbExec(EmulatedSymbExec):
     '''New emulator that trap all memory read and write which is needed by the miasm tracer'''
@@ -35,19 +35,19 @@ class CustomEmulatedSymbExec(EmulatedSymbExec):
         '''Remove a write callback'''
         self._write_callback.remove(callback)
 
-    def _func_read(self, expr_mem):
+    def mem_read(self, expr_mem):
         '''Function call for each read. We overwrite it to intercept the read'''
         for callback in self._read_callback:
             callback(self, expr_mem)
 
-        return super(CustomEmulatedSymbExec, self)._func_read(expr_mem)
+        return super(CustomEmulatedSymbExec, self).mem_read(expr_mem)
 
-    def _func_write(self, symb_exec, dest, data):
+    def mem_write(self, dest, data):
         '''Function call for each write. We overwrite it to intercept the write'''
         for callback in self._write_callback:
             callback(self, dest, data)
 
-        super(CustomEmulatedSymbExec, self)._func_write(symb_exec, dest, data)
+        super(CustomEmulatedSymbExec, self).mem_write(dest, data)
 
 
 class TracerMiasm(Tracer):
@@ -64,7 +64,7 @@ class TracerMiasm(Tracer):
         '''Read callback that add the read event to the snapshot'''
         addr = int(expr_mem.ptr)
         size = expr_mem.size / 8
-        value = int(symb_exec.cpu.get_mem(addr, size)[::-1].encode("hex"), 16)
+        value = int(symb_exec.vm.get_mem(addr, size)[::-1].encode("hex"), 16)
 
         self.current_snapshot.add_memory_read(addr, size, value)
 

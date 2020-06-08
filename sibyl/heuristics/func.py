@@ -6,7 +6,7 @@ import subprocess
 import shutil
 import os
 
-from miasm2.core.asmblock import AsmBlockBad, log_asmblock
+from miasm.core.asmblock import AsmBlockBad, log_asmblock
 
 from sibyl.heuristics.heuristic import Heuristic
 import sibyl.heuristics.csts as csts
@@ -225,8 +225,8 @@ class FuncHeuristic(Heuristic):
 
     def __init__(self, cont, machine, filename):
         """
-        @cont: miasm2's Container instance
-        @machine: miasm2's Machine instance
+        @cont: miasm's Container instance
+        @machine: miasm's Machine instance
         @filename: target's filename
         """
         super(FuncHeuristic, self).__init__()

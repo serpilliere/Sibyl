@@ -5,7 +5,7 @@ import subprocess
 from argparse import ArgumentParser
 from utils.log import log_error, log_success, log_info
 
-from elfesteem.elf_init import ELF
+from miasm.loader.elf_init import ELF
 from sibyl.heuristics.func import FuncHeuristic
 
 match_C = re.compile("\w+[ \*]+(\w+)\(.*\)")

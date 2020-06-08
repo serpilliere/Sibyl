@@ -1,4 +1,4 @@
-from miasm2.analysis.machine import Machine
+from miasm.analysis.machine import Machine
 
 
 class Generator(object):

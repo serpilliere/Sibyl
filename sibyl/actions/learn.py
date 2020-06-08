@@ -1,7 +1,7 @@
 import argparse
 import logging
 
-from miasm2.analysis.binary import Container
+from miasm.analysis.binary import Container
 
 from sibyl.actions.action import Action
 from sibyl.learn.tracer import AVAILABLE_TRACER
